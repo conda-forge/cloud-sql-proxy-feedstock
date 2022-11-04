@@ -10,7 +10,7 @@ source:
   sha256: 5984b051babb0ab97b9f80dbc54caf50150d3ec363e89a01da688539925690f2
 
 build:
-  number: 0
+  number: 1
   script:
     - cd cmd/cloud_sql_proxy && go-licenses save . --save_path ../../library_licenses
     - go build -v -o $PREFIX/bin/cloud_sql_proxy  # [not win]
