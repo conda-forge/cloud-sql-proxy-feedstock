@@ -1,5 +1,5 @@
 {% set name = "cloud-sql-proxy" %}
-{% set version = "1.33.0" %}
+{% set version = "1.33.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/GoogleCloudPlatform/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 5984b051babb0ab97b9f80dbc54caf50150d3ec363e89a01da688539925690f2
+  sha256: ce444201e196da9b0b9d9081545263b196509e950b5d6d98550f69ce23d51e2b
 
 build:
-  number: 1
+  number: 0
   script:
     - cd cmd/cloud_sql_proxy && go-licenses save . --save_path ../../library_licenses
     - go build -v -o $PREFIX/bin/cloud_sql_proxy  # [not win]
