@@ -1,11 +1,11 @@
-About cloud-sql-proxy
-=====================
+About cloud-sql-proxy-feedstock
+===============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cloud-sql-proxy-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/GoogleCloudPlatform/cloud-sql-proxy
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cloud-sql-proxy-feedstock/blob/main/LICENSE.txt)
 
 Summary: A utility for connecting securely to your Cloud SQL instances
 
