@@ -12,9 +12,9 @@ source:
 build:
   number: 0
   script:
-    - cd cmd/cloud_sql_proxy && go-licenses save . --save_path ../../library_licenses
-    - go build -v -o $PREFIX/bin/cloud_sql_proxy  # [not win]
+    - mkdir $PREFIX/bin && go build && cp cloud-sql-proxy $PREFIX/bin  # [not win]
     - go install -v .          # [win]
+    - cd cmd && go-licenses save . --save_path ../library_licenses
 
 requirements:
   build:
@@ -23,7 +23,7 @@ requirements:
 
 test:
   commands:
-    - cloud_sql_proxy --help
+    - cloud-sql-proxy --help
 
 about:
   home: https://github.com/GoogleCloudPlatform/cloud-sql-proxy
