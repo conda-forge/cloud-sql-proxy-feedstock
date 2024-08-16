@@ -1,5 +1,5 @@
 {% set name = "cloud-sql-proxy" %}
-{% set version = "2.12.0" %}
+{% set version = "2.13.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/GoogleCloudPlatform/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 19a59540ea9498d280c8b5e01644bc99e1e3928679ded452a13259fd2e6b4346
+  sha256: bed0e7cd3d04a4b23826a486c57d74ed43fefb07fec73512e8bc9d634be020c8
 
 build:
   number: 0
