@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: cloud-sql-proxy
-  version: 2.15.2
+  version: "2.15.3"
 
 package:
   name: ${{ name|lower }}
@@ -10,15 +10,14 @@ package:
 
 source:
   url: https://github.com/GoogleCloudPlatform/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: ea0e69da591fdf3194c695aebf4188515f2567876fab0df3a834c28783cb8d0c
+  sha256: b62221f9eef118503785080ad120e4b958efa22fa698fa7e9fe80d0d14e757e4
 
 build:
   number: 0
   script:
     - if: not win
       then: mkdir $PREFIX/bin && go build && cp cloud-sql-proxy $PREFIX/bin
-    - if: win
-      then: go install -v .
+      else: go install -v .
     - cd cmd && go-licenses save . --save_path ../library_licenses
 
 requirements:
