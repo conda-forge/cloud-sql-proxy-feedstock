@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: cloud-sql-proxy
-  version: "2.16.0"
+  version: "2.17.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/GoogleCloudPlatform/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: d8ea9e4d34d63b589b894902ed9f6300a5f08dcab113194e74990d3ca3b35787
+  sha256: 8c48d9724e2084cabf7f001fe2cbd9dce33143dd720e55797fa4b15fe6921e66
 
 build:
   number: 0
