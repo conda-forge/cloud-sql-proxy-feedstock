@@ -9,16 +9,21 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/GoogleCloudPlatform/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: 6bea89b43b858590a4f6f7cc48a8490eb8415f22caca408c4ed8eabd47241bcc
+  - url: https://github.com/GoogleCloudPlatform/${{ name }}/archive/v${{ version }}.tar.gz
+    sha256: 6bea89b43b858590a4f6f7cc48a8490eb8415f22caca408c4ed8eabd47241bcc
+    target_directory: src
+  - url: https://raw.githubusercontent.com/jmespath/go-jmespath/b89213a6ec69212a244ef0d07d893bef7f2d9091/LICENSE
+    sha256: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+    file_name: LICENSE-jmespath
 
 build:
   number: 0
   script:
-    - if: not win
-      then: mkdir $PREFIX/bin && go build && cp cloud-sql-proxy $PREFIX/bin
-      else: go install -v .
-    - cd cmd && go-licenses save . --save_path ../library_licenses
+    - cd src
+    - if: unix
+      then: go build -v -o $PREFIX/bin/cloud-sql-proxy -ldflags="-s -w"
+      else: go build -v -o %LIBRARY_BIN%\cloud-sql-proxy.exe -ldflags="-s"
+    - cd cmd && go-licenses save . --save_path ../../library_licenses --ignore github.com/jmespath/go-jmespath
 
 requirements:
   build:
@@ -33,7 +38,8 @@ about:
   license: Apache-2.0
   license_file:
     - library_licenses/
-    - LICENSE
+    - src/LICENSE
+    - LICENSE-jmespath
   summary: A utility for connecting securely to your Cloud SQL instances
   homepage: https://github.com/GoogleCloudPlatform/cloud-sql-proxy
 
